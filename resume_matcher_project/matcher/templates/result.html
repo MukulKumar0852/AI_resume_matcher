@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center min-vh-100">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg my-5" style="border-radius: 24px;">
+            <div class="card-header bg-gradient text-white text-center py-4" style="background: linear-gradient(90deg, #3f37c9 60%, #e76f51 100%); border-radius: 24px 24px 0 0;">
+                <h2 class="fw-bold"><i class="bi bi-bar-chart-line-fill me-2"></i> Resume Match Results</h2>
+            </div>
+            <div class="card-body p-5 bg-light" style="border-radius: 0 0 24px 24px;">
+                <div class="mb-4 text-center">
+                    <h5 class="fw-bold text-purple">Match Score</h5>
+                    <div class="progress" style="height: 38px; background: #eddffb;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                             role="progressbar"
+                             style="width: {{ match_score }}%; background: linear-gradient(90deg, #7209b7, #f75c03); font-size: 1.3em;"
+                             aria-valuenow="{{ match_score }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ match_score }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h5 class="fw-bold text-success">Keywords Matched ({{ matched_words|length }})</h5>
+                    {% if matched_words %}
+                    <div>
+                        {% for word in matched_words %}
+                        <span class="badge me-1 mb-1 px-3 py-2 fs-5"
+                              style="background: linear-gradient(90deg,#ffbe0b,#fb5607); color: #222; border-radius: 14px;">
+                            {{ word }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p><em>No keywords matched.</em></p>
+                    {% endif %}
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-lg px-4 shadow"
+                       style="background: linear-gradient(90deg,#43aa8b,#577590); color: #fff;">
+                        <i class="bi bi-arrow-repeat me-1"></i> Try Again
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.text-purple { color: #7209b7 !important; }
+.bg-gradient { background: linear-gradient(90deg, #3f37c9 60%, #e76f51 100%)!important; }
+</style>
+{% endblock %}
