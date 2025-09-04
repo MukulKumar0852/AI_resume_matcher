@@ -54,10 +54,4 @@ all running locally with no external API required.
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Contributions
 
-Contributions, issues, and feature requests are welcome!
-
----
-
-Feel free to customize this README further or ask if you want specific sections added.
